@@ -104,8 +104,10 @@ class Solution {
       }
       
       i++ ;
-      if(i==k)
-      return root->data ;
+      if(i==k){
+          return root->data ;
+      }
+      
       int right= solve(root->right,i,k) ;
   }
     // Return the Kth smallest element in the given BST
