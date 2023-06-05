@@ -39,7 +39,7 @@ class Solution
 	//value of the BST and the given integer.
 	void solve(Node* root,int& ans,int k ){
 	    if(root==NULL){
-	        ans=min(ans,k) ;
+	      
 	        return ;
 	    }
 	    ans= min(ans,abs(root->data - k)) ;
