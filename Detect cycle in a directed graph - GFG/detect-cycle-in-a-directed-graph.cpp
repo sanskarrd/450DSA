@@ -14,7 +14,7 @@ class Solution {
                 if(dfsCycleCheck(it,vis,pathVis,adj)==true)
                 return true;
             }
-            else if(pathVis[it]){
+            else if(pathVis[it]==1){
                 return true ;
             }
         }
