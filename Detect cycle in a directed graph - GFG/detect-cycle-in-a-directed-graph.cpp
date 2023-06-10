@@ -6,12 +6,12 @@ using namespace std;
 class Solution {
     
   private:
-    bool dfs(int node, int vis[],int pathVis[], vector<int> adj[]){
+    bool dfsCycleCheck(int node, int vis[],int pathVis[], vector<int> adj[]){
         vis[node] = 1 ;
         pathVis[node] = 1 ;
         for(auto it : adj[node]){
             if(!vis[it]){
-                if(dfs(it,vis,pathVis,adj)==true)
+                if(dfsCycleCheck(it,vis,pathVis,adj)==true)
                 return true;
             }
             else if(pathVis[it]){
@@ -31,7 +31,7 @@ class Solution {
         
         for(int i =0 ; i<V ;i++){
             if(!vis[i]){
-                if( dfs(i,vis,pathVis,adj) == true){
+                if( dfsCycleCheck(i,vis,pathVis,adj) == true){
                     return true ;
                 }
             }
