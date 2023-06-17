@@ -30,7 +30,10 @@ long long minTime(int arr[], int n, int k) {
     }
     long long ans = 0;
     long long low = *max_element(arr, arr + n);
-    long long high = accumulate(arr, arr + n, 0LL);
+    long long high = 0 ;
+    for(int i= 0 ; i< n ; i++){
+        high+=arr[i];
+    }
 
     while (low <= high) {
         long long mid = low + (high - low) / 2;
