@@ -7,8 +7,7 @@ using namespace std;
 
 // } Driver Code Ends
 // User function Template for C++
-int drow[]= {-1,0,1,0} ;
-int dcol[] ={0,1,0,-1} ;
+
 class Solution {
 
   private :
@@ -17,6 +16,8 @@ class Solution {
         int n = grid.size() ;
         int m = grid[0].size() ;
         vis[i][j] = 1 ;
+        int drow[]= {-1,0,1,0} ;
+        int dcol[] ={0,1,0,-1} ;
         for(int k = 0 ; k< 4 ; k++){
             int nrow = i + drow[k] ;
             int ncol = j+  dcol[k] ;
