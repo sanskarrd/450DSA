@@ -11,7 +11,7 @@ class Solution {
     int findCity(int n, int m, vector<vector<int>>& edges,int distanceThreshold)
     {
         
-        vector<vector<int>> matrix(n,vector<int>(n,1e9)) ;
+        vector<vector<int>> matrix(n,vector<int>(n,1e8)) ;
         
         for(auto it: edges){
             matrix[it[0]][it[1]] = it[2] ;
