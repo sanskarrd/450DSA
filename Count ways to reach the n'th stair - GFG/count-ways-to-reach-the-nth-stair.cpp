@@ -21,7 +21,7 @@ class Solution
             return dp[n] ;
         }
         
-       return dp[n] = (solve(n-1,dp)%mod + solve(n-2,dp)%mod)%mod;
+       return dp[n] = (solve(n-1,dp) + solve(n-2,dp))%mod;
     }
     int countWays(int n)
     {
