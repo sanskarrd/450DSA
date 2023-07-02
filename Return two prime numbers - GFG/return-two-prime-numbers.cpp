@@ -32,6 +32,7 @@ void checkPrime(int n ,vector<bool>&isPrime){
             if(isPrime[a] && isPrime[complement]){
                 temp.push_back(a) ;
                 temp.push_back(complement);
+                break ;
             }
         }
         return temp ;
