@@ -26,7 +26,7 @@ void checkPrime(int n ,vector<bool>&isPrime){
     vector<bool>isPrime(n+1,true);
     checkPrime(n,isPrime);
        vector<int>temp;
-        for(int i = 2 ; i<=n/2 ; i++){
+        for(int i = 2 ; i<=n; i++){
             int a = i ;
             int complement = n-i ;
             if(isPrime[a] && isPrime[complement]){
