@@ -8,24 +8,19 @@ using namespace std;
 //User function template for C++
 class Solution{
 public:	
-	int solve(int *arr,int n,vector<int>&dp ){
-	    if(n==0){
-	        return arr[0] ;
-	    }
-	    if(n<0){
-	        return 0 ;
-	    }
-	    if(dp[n]!=-1){
-	        return dp[n] ;
-	    }
-	    int pick = arr[n] + solve(arr,n-2,dp);
-	    int notPick = solve(arr,n-1,dp);
-	   dp[n] =  max(pick,notPick) ;
-	   return dp[n] ;
-	}
+
 	int findMaxSum(int *arr, int n) {
 	    vector<int>dp(n,-1);
-	    return solve(arr,n-1,dp);
+	    dp[0]=arr[0];
+	    
+	    for(int i =1 ; i< n ; i++){
+	        int pick = arr[i] ;
+	       if(i>1)
+	       pick = arr[i] + dp[i-2];
+	       int notPick = dp[i-1];
+	       dp[i] =  max(pick,notPick) ;
+	    }
+	    return dp[n-1] ;
 	}
 };
 
