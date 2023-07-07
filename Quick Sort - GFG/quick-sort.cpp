@@ -32,34 +32,29 @@ class Solution
     int partition (int arr[], int low, int high)
     {
         int val = arr[low];
-        int count = 0;
-        
-        for(int i = low; i<= high ;i++){
-            if(arr[i]<val){
-                count++;
+        int count = 0 ;
+        for(int i = low ; i<=high ; i++){
+            if(arr[i]< val){
+                count++ ;
             }
-            
         }
-        int pivot = count+low;
-        swap(arr[pivot],arr[low]);
-        
-        int i = low;
-        int j = high;
-        
-        while(i<pivot && j> pivot){
+        int pivot = count+low ;
+        swap(arr[low],arr[low+count]);
+        int i = low ;
+        int j = high ;
+        while(i<pivot && j>pivot){
+            
             while(arr[i]<val){
                 i++;
             }
-            while(arr[j]>=val){
+              while(arr[j]>=val){
                 j--;
             }
-            
-            if(i < pivot && j > pivot){
-                swap(arr[i], arr[j]);
+            if(i<pivot && j>pivot){
+                swap(arr[i],arr[j]);
             }
-            
         }
-        return pivot;
+        return pivot ;
     }
 };
 
