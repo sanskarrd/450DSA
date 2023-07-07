@@ -20,7 +20,7 @@ public:
            return dp[ind][target] ;
        }
        bool notTake  = solve(ind-1,target,arr,dp);
-       bool take = false ;
+       bool take;
        if(arr[ind]<=target)
        take =  solve(ind-1 , target- arr[ind],arr,dp);
        
