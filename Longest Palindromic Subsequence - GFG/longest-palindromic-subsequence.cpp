@@ -11,13 +11,13 @@ using namespace std;
 class Solution {
 public:
      int solve(int i , int j ,string s1,string s2,vector<vector<int>>&dp){
-         if(i<0 || j<0){
+         if(i==0 || j==0){
              return 0 ;
          }
          if(dp[i][j] != -1){
              return dp[i][j] ;
          }
-         if(s1[i] == s2[j]){
+         if(s1[i-1] == s2[j-1]){
              return 1+ solve(i-1,j-1,s1,s2,dp) ;
          }
          
@@ -27,8 +27,8 @@ public:
         int n = A.size() ; 
         string B  = A;
         reverse(B.begin(),B.end());
-        vector<vector<int>>dp(n,vector<int>(n,-1)) ;
-        return solve(n-1,n-1,A,B,dp) ;
+        vector<vector<int>>dp(n+1,vector<int>(n+1,-1)) ;
+        return solve(n,n,A,B,dp) ;
     }
 };
 
