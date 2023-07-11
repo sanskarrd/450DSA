@@ -17,7 +17,7 @@ class Solution{
 
        
        long long temp = power(N,R/2);
-       long long result = ((temp%(long)md) * (temp%(long)mod))%(long)md ;
+       long long result = ((temp%(long)md) * (temp%(long)md))%(long)md ;
        if(R%2 ==1){
            result = (result * N)%(long)md ;
        }
