@@ -115,8 +115,9 @@ class Solution {
         
         int leftD = diameter(root->left);
         int rightD = diameter(root->right);
+        int pt2 = max(leftD,rightD) ;
         
-        return max(pt1,max(leftD,rightD)) ;
+        return max(pt1,pt2) ;
     }
 };
 
