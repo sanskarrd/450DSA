@@ -105,69 +105,65 @@ struct Node
 
 class Solution {
 public:
-void traverseLeft(Node *root, vector<int> &ans)
-    {
-        if((root == NULL) || (root->left == NULL && root->right == NULL))
-            return;
-        
-        ans.push_back(root->data);
-        
-        if(root->left)
-            traverseLeft(root->left, ans);
-        else
-            traverseLeft(root->right, ans);
-        
-    }
-    
-    void traverseLeaf(Node *root, vector<int> &ans)
-    {
-        if(root == NULL)
-            return;
-            
-        if(root->left == NULL && root->right == NULL){
-            ans.push_back(root->data);
-            return;
-        }
-            
-        traverseLeaf(root->left, ans);
-        traverseLeaf(root->right, ans);
-    }
-    
-    void traverseRight(Node *root,  vector<int> &ans)
-    {
-        if((root == NULL) || (root->left == NULL && root->right == NULL))
-            return;
-            
-        if(root->right)
-            traverseRight(root->right, ans);
-        else
-            traverseRight(root->left,ans);
-        
-        ans.push_back(root->data);
-    }
-
+  void solveLeft(vector<int>&ans,Node* root){
+     if(!root ||(!root->left && !root->right) ){
+         return ;
+     }
+     
+     ans.push_back(root->data);
+     if(root->left!=NULL){
+         solveLeft(ans,root->left) ;
+     }
+     else{
+        solveLeft(ans,root->right) ;
+     }
+     
+  }
+  
+  void solveLeaf(vector<int>&ans,Node* root){
+      
+      if(!root){
+          return ;
+      }
+      if(root->left==NULL && root->right ==NULL){
+          ans.push_back(root->data) ;
+          
+      }
+      solveLeaf(ans,root->left);
+      solveLeaf(ans,root->right);
+      
+  }
+  void solveRight(vector<int>&ans,Node* root){
+      if(!root ||(!root->left && !root->right) ){
+         return ;
+     }
+     if(root->right!=NULL){
+         solveRight(ans,root->right);
+     }
+     else{
+         solveRight(ans,root->left) ;
+     }
+      ans.push_back(root->data) ;
+      
+  }
     vector <int> boundary(Node *root)
     {
-        vector<int> ans;
-        
-        if(root->left == NULL && root->right == NULL){
-            ans.push_back(root->data);
+        vector<int>ans ;
+        if(!root){
             return ans;
         }
+        if(root->left==NULL && root->right ==NULL){
+            int temp = root->data ;
+            ans.push_back(temp);
+            return ans ;
+        }
+        ans.push_back(root->data) ;
+        solveLeft(ans,root->left);
+        solveLeaf(ans,root);
+        solveRight(ans,root->right) ;
         
-        ans.push_back(root->data);
-        
-        traverseLeft(root->left, ans);
-        
-        traverseLeaf(root->left, ans);
-        traverseLeaf(root->right, ans);
-        
-        traverseRight(root->right, ans);
-        
-        return ans;
+        return ans ;
     }
-
-
 };
 
 //{ Driver Code Starts.
