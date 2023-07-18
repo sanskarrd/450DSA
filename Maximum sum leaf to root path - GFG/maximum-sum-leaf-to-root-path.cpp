@@ -101,7 +101,7 @@ class Solution{
         }
         solve(root->left, ans,path) ;
         solve(root->right,ans,path) ;
-        path -= root->data ;
+        // path -= root->data ;
     }
     int maxPathSum(Node* root)
     {
