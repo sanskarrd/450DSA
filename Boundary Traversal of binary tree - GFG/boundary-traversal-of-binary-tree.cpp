@@ -105,63 +105,65 @@ struct Node
 
 class Solution {
 public:
-  void solveLeft(vector<int>&ans,Node* root){
-     if(!root ||(!root->left && !root->right) ){
-         return ;
-     }
-     
+void goRight(Node* root,vector<int>&ans){
+    
+    if(root==NULL){
+        return ;
+    }
+    if(root->left == NULL && root->right == NULL){
+        return  ;
+    }
+    if(root->right!=NULL){
+        goRight(root->right,ans);
+    }else{
+        goRight(root->left,ans) ;
+    }
      ans.push_back(root->data);
-     if(root->left!=NULL){
-         solveLeft(ans,root->left) ;
-     }
-     else{
-        solveLeft(ans,root->right) ;
-     }
-     
-  }
-  
-  void solveLeaf(vector<int>&ans,Node* root){
-      
-      if(!root){
-          return ;
-      }
-      if(root->left==NULL && root->right ==NULL){
-          ans.push_back(root->data) ;
-          
-      }
-      solveLeaf(ans,root->left);
-      solveLeaf(ans,root->right);
-      
-  }
-  void solveRight(vector<int>&ans,Node* root){
-      if(!root ||(!root->left && !root->right) ){
-         return ;
-     }
-     if(root->right!=NULL){
-         solveRight(ans,root->right);
-     }
-     else{
-         solveRight(ans,root->left) ;
-     }
-      ans.push_back(root->data) ;
-      
-  }
-    vector <int> boundary(Node *root)
+   
+}
+void goTrees(Node* root, vector<int>&ans){
+     if(root==NULL){
+        return ;
+    }
+    if(root->left == NULL && root->right == NULL){
+        ans.push_back(root->data)  ;
+    }
+    
+    goTrees(root->left,ans);
+    goTrees(root->right,ans);
+}
+void goLeft(Node* root , vector<int>&ans){
+    
+    if(root==NULL){
+        return ;
+    }
+    if(root->left == NULL && root->right == NULL){
+        return  ;
+    }
+    ans.push_back(root->data) ;
+    if(root->left!=NULL){
+        goLeft(root->left,ans) ;
+    }
+    else
+    goLeft(root->right,ans) ;
+    
+}
+
+ vector <int> boundary(Node *root)
     {
-        vector<int>ans ;
-        if(!root){
-            return ans;
-        }
-        if(root->left==NULL && root->right ==NULL){
-            int temp = root->data ;
-            ans.push_back(temp);
+         vector<int>ans ;
+        if(root==NULL){
             return ans ;
         }
+       if(root->left ==NULL && root->right==NULL){
+           vector<int>temp ;
+           temp.push_back(root->data) ;
+           return temp ;
+       }
         ans.push_back(root->data) ;
-        solveLeft(ans,root->left);
-        solveLeaf(ans,root);
-        solveRight(ans,root->right) ;
-        
+        goLeft(root->left,ans) ;
+        goTrees(root,ans);
+        goRight(root->right,ans);
         return ans ;
     }
 };
