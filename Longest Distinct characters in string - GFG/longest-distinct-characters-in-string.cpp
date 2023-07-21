@@ -20,25 +20,19 @@ int main()
 
 int longestSubstrDistinctChars (string s)
 {
-      vector<int>v(26,0) ;
-        int i = 0 ;
-        int j = 0 ;
-        int ans  = 0 ;
-        int n = s.size();
-        while(j<n){
-            v[s[j]-'a']++ ;
-            if(v[s[j]-'a'] ==1){
-                ans = max(ans ,j-i+1);
+      int n = s.size();
+        unordered_map <char,int> mp;
+        int j = 0;
+        int ans = 0;
+        for(int i=0;i<n;i++){
+            mp[s[i]]++;
+            while(mp[s[i]] == 2){
+                mp[s[j]]--;
+                if(mp[s[j]] == 0)
+                    mp.erase(s[j]);
                 j++;
             }
-            else{
-                while(v[s[j]-'a'] >1){
-                    v[s[i]-'a']-- ;
-                    i++ ;
-                }
-                ans = max(ans ,j-i+1);
-                j++ ;
-            }
+            ans = max(ans,i-j+1);
         }
-        return ans  ;
+        return ans;
 }
