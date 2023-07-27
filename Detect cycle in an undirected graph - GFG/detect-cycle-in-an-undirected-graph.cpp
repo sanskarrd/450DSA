@@ -4,8 +4,9 @@ using namespace std;
 
 // } Driver Code Ends
 class Solution {
-    private:  
-  bool detect(int src ,vector<int> adj[],int vis[] ){
+  public:
+    // Function to detect cycle in an undirected graph.
+     bool detect(int src ,vector<int> adj[],int vis[] ){
       vis[src] = 1 ;
       queue<pair<int,int> > q ;
       q.push({src,-1}) ;
@@ -26,8 +27,6 @@ class Solution {
       }
       return false ;
   }
-  public:
-    // Function to detect cycle in an undirected graph.
     bool isCycle(int V, vector<int> adj[]) {
          int vis[V]={0} ;
          for(int i = 0 ; i<V ; i++){
