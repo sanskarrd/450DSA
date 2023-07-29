@@ -24,20 +24,20 @@ class Solution
     }
     void union_( int a, int b, int par[], int rank1[]) 
     {
-        a = findParent(a,par);
-        b = findParent(b,par);
-          if(rank1[a] > rank1[b])
+        int c = findParent(a,par);
+        int d = findParent(b,par);
+          if(rank1[c] > rank1[d])
         {
-            par[b] = a;
+            par[d] = c;
         }
-        else if(rank1[b] > rank1[a])
+        else if(rank1[d] > rank1[c])
         {
-            par[a] = b;
+            par[c] = d;
         }
         else 
         {
-            par[a] = b;
-            rank1[b]++;
+            par[c] = d;
+            rank1[d]++;
         }
     }
     
