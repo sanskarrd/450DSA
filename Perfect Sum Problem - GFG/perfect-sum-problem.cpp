@@ -34,11 +34,12 @@ class Solution{
 	int perfectSum(int arr[], int n, int sum)
 	{
         
-        vector<vector<int>>dp(n+1 ,vector<int>(sum+1,-1)) ;
+        vector<vector<int>>dp(n,vector<int>(sum+1,-1)) ;
         return  solve(n-1,sum,arr,dp);
 	}
 	  
 };
+
 
 //{ Driver Code Starts.
 int main() 
